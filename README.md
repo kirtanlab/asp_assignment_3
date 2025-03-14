@@ -9,71 +9,65 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 ### Core Functionality
 
 - [x] Basic shell loop and prompt implementation
-- [ ] Command parsing and tokenization
-- [ ] [Memory management and cleanup](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L412-L427) <!-- Link to memory management section -->
-- [ ] Basic command execution using fork() and exec()
+- [x] Command parsing and tokenization
+- [x] Memory management and cleanup ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L412-L430))
+- [x] Basic command execution using fork() and exec()
   - [ ] `ls` - List directory contents
   - [ ] `pwd` - Print working directory
   - [ ] `echo hello world` - Echo text
-- [ ] Argument count validation (1-5 arguments per command)
+- [x] Argument count validation (1-5 arguments per command)
   - [ ] Command with 5 arguments (maximum): `ls -l -a -h -t`
   - [ ] Command with >5 arguments (should fail): `ls -l -a -h -t -r`
 
 ### Built-in Commands
 
-- [ ] `killterm` - Kill the current terminal
+- [x] `killterm` - Kill the current terminal ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L443-L447))
   - [ ] Test: `killterm` (should exit current shell)
-- [ ] `killallterms` - Kill all w25shell terminals
+- [x] `killallterms` - Kill all w25shell terminals ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L453-L481))
   - [ ] Test: `killallterms` (should exit all open shells)
 
 ### Piping Operations (`|`)
 
-- [ ] Basic piping implementation
+- [x] Basic piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L230-L285))
   - [ ] Single pipe: `ls -l | grep .txt`
   - [ ] Two pipes: `ls -l | grep .txt | wc -l`
   - [ ] Maximum pipes (5): `ls | grep . | sort | head -n 3 | wc -l`
-- [ ] Argument count validation with pipes
+- [x] Argument count validation with pipes
   - [ ] Valid: `ls -l -a -h -r | wc -l`
   - [ ] Invalid: `ls -l -a -h -r -t | wc -l`
 
 ### Reverse Piping (`=`)
 
-- [ ] Basic reverse piping implementation
+- [x] Basic reverse piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L291-L345))
   - [ ] Single reverse pipe: `wc -l = cat sample.txt`
   - [ ] Multiple reverse pipes: `wc -l = grep -v test = cat sample.txt`
-- [ ] Argument count validation with reverse pipes
+- [x] Argument count validation with reverse pipes
   - [ ] Valid: `wc -l = grep -a -b -c = cat`
   - [ ] Invalid: `wc -l -a = grep -a -b -c -d -e = cat`
 
 ### File Operations
 
-- [ ] Append between files (`~`)
+- [x] Append between files (`~`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L353-L396))
   - [ ] Test: `file1.txt ~ file2.txt`
   - [ ] Verify: `cat file1.txt` and `cat file2.txt`
-- [ ] Count words in file (`#`)
+- [x] Count words in file (`#`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L402-L428))
   - [ ] Test: `# sample.txt`
   - [ ] Test with large file: `# large_sample.txt`
-- [ ] File concatenation (`+`)
+- [x] File concatenation (`+`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L434-L454))
   - [ ] Two-file concatenation: `file1.txt + file2.txt`
   - [ ] Maximum file concatenation: `file1.txt + file2.txt + file3.txt + file4.txt + file5.txt`
 
 ### Redirection
 
-- [ ] Input redirection (`<`)
+- [x] Input/output redirection (`<`, `>`, `>>`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L460-L508))
   - [ ] Test: `grep hello < input.txt`
-- [ ] Output redirection (`>`)
   - [ ] Test: `ls -l > output.txt`
-  - [ ] Verify: `cat output.txt`
-- [ ] Output append (`>>`)
   - [ ] Test: `echo "more data" >> output.txt`
-  - [ ] Verify: `cat output.txt`
-- [ ] Combined redirection
   - [ ] Test: `grep hello < input.txt > output.txt`
-  - [ ] Verify: `cat output.txt`
 
 ### Sequential Execution (`;`)
 
-- [ ] Basic sequential execution
+- [x] Basic sequential execution ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L351-L358))
   - [ ] Two commands: `date ; pwd`
   - [ ] Three commands: `date ; pwd ; ls`
   - [ ] Maximum commands (4): `echo 1 ; echo 2 ; echo 3 ; echo 4`
@@ -82,21 +76,17 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### Conditional Execution
 
-- [ ] AND operation (`&&`)
+- [x] AND and OR operations (`&&`, `||`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L364-L416))
   - [ ] Success case: `ls && echo "Command succeeded"`
   - [ ] Failure case: `ls non_existent_file && echo "This won't print"`
   - [ ] Multiple AND: `ls && pwd && echo "Both succeeded"`
-- [ ] OR operation (`||`)
   - [ ] Success after failure: `ls non_existent_file || echo "Command failed"`
   - [ ] Skip after success: `ls || echo "This won't print"`
-- [ ] Mixed conditionals
-  - [ ] Test: `ls && echo "Success" || echo "This won't print"`
-  - [ ] Test: `ls non_existent_file && echo "Not printed" || echo "Recovered from error"`
-  - [ ] Complex: `ls && pwd || echo "Error" && echo "Final"`
+  - [ ] Mixed conditionals: `ls && echo "Success" || echo "This won't print"`
 
 ### Edge Cases
 
-- [ ] Empty command (just press Enter)
+- [x] Empty command (just press Enter)
 - [ ] Non-existent command: `thiscommanddoesnotexist`
 - [ ] Non-existent input file: `cat nonexistent.txt`
 - [ ] Permission denied: Try writing to a read-only file
@@ -213,8 +203,6 @@ echo "third line without hello" >> input.txt
 ```
 
 ## Implementation Details
-
-> **Note:** Throughout the code, you can find section markers like `// SECTION: memory_management` and `// END SECTION: memory_management`. These help connect the items in this README to their corresponding code implementations.
 
 The shell is implemented with a modular approach:
 
