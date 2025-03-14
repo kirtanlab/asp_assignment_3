@@ -10,7 +10,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 - [x] Basic shell loop and prompt implementation
 - [x] Command parsing and tokenization
-- [x] Memory management and cleanup ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L412-L430))
+- [x] Memory management and cleanup ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L412-L430))
 - [x] Basic command execution using fork() and exec()
   - [ ] `ls` - List directory contents
   - [ ] `pwd` - Print working directory
@@ -21,14 +21,14 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### Built-in Commands
 
-- [x] `killterm` - Kill the current terminal ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L443-L447))
+- [x] `killterm` - Kill the current terminal ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L443-L447))
   - [ ] Test: `killterm` (should exit current shell)
-- [x] `killallterms` - Kill all w25shell terminals ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L453-L481))
+- [x] `killallterms` - Kill all w25shell terminals ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L453-L481))
   - [ ] Test: `killallterms` (should exit all open shells)
 
 ### Piping Operations (`|`)
 
-- [x] Basic piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L230-L285))
+- [x] Basic piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L230-L285))
   - [ ] Single pipe: `ls -l | grep .txt`
   - [ ] Two pipes: `ls -l | grep .txt | wc -l`
   - [ ] Maximum pipes (5): `ls | grep . | sort | head -n 3 | wc -l`
@@ -38,7 +38,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### Reverse Piping (`=`)
 
-- [x] Basic reverse piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L291-L345))
+- [x] Basic reverse piping implementation ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L291-L345))
   - [ ] Single reverse pipe: `wc -l = cat sample.txt`
   - [ ] Multiple reverse pipes: `wc -l = grep -v test = cat sample.txt`
 - [x] Argument count validation with reverse pipes
@@ -47,19 +47,19 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### File Operations
 
-- [x] Append between files (`~`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L353-L396))
+- [x] Append between files (`~`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L353-L396))
   - [ ] Test: `file1.txt ~ file2.txt`
   - [ ] Verify: `cat file1.txt` and `cat file2.txt`
-- [x] Count words in file (`#`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L402-L428))
+- [x] Count words in file (`#`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L402-L428))
   - [ ] Test: `# sample.txt`
   - [ ] Test with large file: `# large_sample.txt`
-- [x] File concatenation (`+`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L434-L454))
+- [x] File concatenation (`+`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L434-L454))
   - [ ] Two-file concatenation: `file1.txt + file2.txt`
   - [ ] Maximum file concatenation: `file1.txt + file2.txt + file3.txt + file4.txt + file5.txt`
 
 ### Redirection
 
-- [x] Input/output redirection (`<`, `>`, `>>`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L460-L508))
+- [x] Input/output redirection (`<`, `>`, `>>`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L460-L508))
   - [ ] Test: `grep hello < input.txt`
   - [ ] Test: `ls -l > output.txt`
   - [ ] Test: `echo "more data" >> output.txt`
@@ -67,7 +67,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### Sequential Execution (`;`)
 
-- [x] Basic sequential execution ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L351-L358))
+- [x] Basic sequential execution ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L351-L358))
   - [ ] Two commands: `date ; pwd`
   - [ ] Three commands: `date ; pwd ; ls`
   - [ ] Maximum commands (4): `echo 1 ; echo 2 ; echo 3 ; echo 4`
@@ -76,7 +76,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 ### Conditional Execution
 
-- [x] AND and OR operations (`&&`, `||`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/w25shell.c#L364-L416))
+- [x] AND and OR operations (`&&`, `||`) ([See code](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L364-L416))
   - [ ] Success case: `ls && echo "Command succeeded"`
   - [ ] Failure case: `ls non_existent_file && echo "This won't print"`
   - [ ] Multiple AND: `ls && pwd && echo "Both succeeded"`
@@ -98,7 +98,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 ### Compile the Code
 
 ```bash
-gcc -o w25shell w25shell.c
+gcc -o w25shell kirtan_prajapati_110181626.c
 ```
 
 ### Run the Shell
