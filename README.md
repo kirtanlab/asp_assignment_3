@@ -10,7 +10,7 @@ W25Shell is a custom shell implementation for COMP-8567 Assignment 03 (Winter 20
 
 - [x] Basic shell loop and prompt implementation
 - [ ] Command parsing and tokenization
-- [ ] [Memory management and cleanup](https://github.com/kirtanlab/w25shell/blob/main/kirtan_prajapati_110181626.c#L412-L427) <!-- Link to memory management section -->
+- [ ] [Memory management and cleanup](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L412-L427) <!-- Link to memory management section -->
 - [ ] Basic command execution using fork() and exec()
   - [ ] `ls` - List directory contents
   - [ ] `pwd` - Print working directory
