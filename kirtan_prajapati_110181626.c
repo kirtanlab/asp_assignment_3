@@ -1,19 +1,3 @@
-/**
- * w25shell.c - A custom shell implementation for COMP-8567 Assignment 03
- *
- * This program implements a custom shell that supports various operations including:
- * - Basic command execution
- * - Piping and reverse piping
- * - File operations
- * - Conditional execution
- * - Sequential execution
- * - Input/output redirection
- *
- * Code sections are marked with comments like:
- * // SECTION STARTS: [SECTION_NAME]
- * // SECTION ENDS: [SECTION_NAME]
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
