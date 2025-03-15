@@ -6,7 +6,7 @@ A custom UNIX-like shell implementation with advanced piping and file operations
 
 ### Command Execution
 
-• [Basic command execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L174-L226)
+• [Basic command execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L377-L444)
 
 ```
 ls -l
@@ -16,13 +16,13 @@ echo hello world
 
 ### Built-in Commands
 
-• `killterm` - [Kill current terminal](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L443-L447)
+• `killterm` - [Kill current terminal](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L988-L997)
 
 ```
 killterm
 ```
 
-• `killallterms` - [Kill all shells](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L453-L481)
+• `killallterms` - [Kill all shells](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L999-L1038)
 
 ```
 killallterms
@@ -30,7 +30,7 @@ killallterms
 
 ### Piping Operations
 
-• [Forward piping](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L230-L285)
+• [Forward piping](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L446-L533)
 
 ```
 ls -l | grep .txt
@@ -38,7 +38,7 @@ ls -l | grep .txt | wc -l
 ls | grep . | sort | head -n 3 | wc -l
 ```
 
-• [Reverse piping](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L291-L345)
+• [Reverse piping](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L535-L622)
 
 ```
 wc -l = cat sample.txt
@@ -47,19 +47,19 @@ wc -l = grep -v test = cat sample.txt
 
 ### File Operations
 
-• [Append files](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L353-L396)
+• [Append files](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L716-L783)
 
 ```
 file1.txt ~ file2.txt
 ```
 
-• [Count words](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L402-L428)
+• [Count words](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L785-L821)
 
 ```
 # sample.txt
 ```
 
-• [Concatenate files](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L434-L454)
+• [Concatenate files](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L823-L855)
 
 ```
 file1.txt + file2.txt
@@ -68,7 +68,7 @@ file1.txt + file2.txt + file3.txt + file4.txt + file5.txt
 
 ### Redirection
 
-• [I/O Redirection](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L460-L508)
+• [I/O Redirection](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L857-L931)
 
 ```
 grep hello < input.txt
@@ -79,7 +79,7 @@ grep hello < input.txt > output.txt
 
 ### Sequential & Conditional Execution
 
-• [Sequential execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L351-L358)
+• [Sequential execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L624-L639)
 
 ```
 date ; pwd
@@ -87,7 +87,7 @@ date ; pwd ; ls
 echo 1 ; echo 2 ; echo 3 ; echo 4
 ```
 
-• [Conditional execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L364-L416)
+• [Conditional execution](https://github.com/kirtanlab/asp_assignment_3/blob/main/kirtan_prajapati_110181626.c#L641-L714)
 
 ```
 ls && echo "Command succeeded"

@@ -995,7 +995,6 @@ void killterm_command()
     printf("Killing current terminal...\n");
     exit(0);
 }
-
 /**
  * Function to handle killallterms command
  * Kills all w25shell processes by sending SIGTERM to all processes with
