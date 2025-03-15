@@ -10,8 +10,8 @@
  * - Input/output redirection
  *
  * Code sections are marked with comments like:
- * // SECTION: [SECTION_NAME]
- * // END SECTION: [SECTION_NAME]
+ * // SECTION STARTS: [SECTION_NAME]
+ * // SECTION ENDS: [SECTION_NAME]
  */
 
 #include <stdio.h>
@@ -24,14 +24,19 @@
 #include <signal.h>
 #include <errno.h>
 
+// SECTION STARTS: "CONSTANTS AND DEFINITIONS"
 #define MAX_INPUT_SIZE 1024 // Maximum size of input line
 #define MAX_ARGS 5          // Maximum arguments per command (including command name)
 #define MAX_COMMANDS 6      // Maximum commands in a pipeline (5 pipes + 1)
 #define MAX_SEQ_COMMANDS 4  // Maximum commands in sequential execution
+// SECTION ENDS: "CONSTANTS AND DEFINITIONS"
 
+// SECTION STARTS: "GLOBAL VARIABLES"
 // Global variables to track all shell processes for killallterms command
 pid_t current_pid;
+// SECTION ENDS: "GLOBAL VARIABLES"
 
+// SECTION STARTS: "FUNCTION PROTOTYPES"
 // Function prototypes
 void display_prompt();
 int read_input(char *input, size_t size);
@@ -49,7 +54,9 @@ int validate_args_count(char **args);
 void handle_redirection(char **args, int *in_fd, int *out_fd);
 void killterm_command();
 void killallterms_command();
+// SECTION ENDS: "FUNCTION PROTOTYPES"
 
+// SECTION STARTS: "MAIN SHELL LOOP"
 /**
  * Main function - Entry point of the shell program
  */
@@ -114,22 +121,27 @@ int main()
         // Execute commands based on special character
         if (special_char[0] == '|')
         {
+            // Forward piping
             execute_piped_commands(commands, command_count);
         }
         else if (special_char[0] == '=')
         {
+            // Reverse piping
             execute_reverse_piped_commands(commands, command_count);
         }
         else if (special_char[0] == '~' && command_count == 2)
         {
+            // Append files
             append_files(commands[0][0], commands[1][0]);
         }
         else if (special_char[0] == '#' && command_count == 1)
         {
+            // Count words
             count_words(commands[0][0]);
         }
         else if (special_char[0] == '+')
         {
+            // Concatenate files
             // Extract file names from commands for concatenation
             char *files[MAX_COMMANDS];
             for (int i = 0; i < command_count; i++)
@@ -140,11 +152,12 @@ int main()
         }
         else if (special_char[0] == ';')
         {
+            // Sequential execution
             execute_sequential_commands(commands, command_count);
         }
         else if (special_char[0] == '&' || special_char[0] == '|')
         {
-            // For conditional execution with && and ||
+            // Conditional execution with && and ||
             execute_conditional_commands(commands, command_count, special_char);
         }
         else if (command_count == 1)
@@ -164,7 +177,9 @@ int main()
 
     return 0;
 }
+// SECTION ENDS: "MAIN SHELL LOOP"
 
+// SECTION STARTS: "SHELL INTERFACE"
 /**
  * Function to display the shell prompt
  */
@@ -200,7 +215,9 @@ int read_input(char *input, size_t size)
 
     return length;
 }
+// SECTION ENDS: "SHELL INTERFACE"
 
+// SECTION STARTS: "COMMAND PARSING"
 /**
  * Function to parse the input and identify special characters
  *
@@ -355,7 +372,9 @@ int parse_input(char *input, char ***commands, int *command_count, char *special
     free(input_copy);
     return 0;
 }
+// SECTION ENDS: "COMMAND PARSING"
 
+// SECTION STARTS: "BASIC COMMAND EXECUTION"
 /**
  * Function to execute a single command
  *
@@ -422,7 +441,9 @@ void execute_command(char **args)
         waitpid(pid, NULL, 0);
     }
 }
+// SECTION ENDS: "BASIC COMMAND EXECUTION"
 
+// SECTION STARTS: "FORWARD PIPING"
 /**
  * Function to execute piped commands
  *
@@ -509,7 +530,9 @@ void execute_piped_commands(char ***commands, int command_count)
         wait(NULL);
     }
 }
+// SECTION ENDS: "FORWARD PIPING"
 
+// SECTION STARTS: "REVERSE PIPING"
 /**
  * Function to execute reverse piped commands
  *
@@ -596,7 +619,9 @@ void execute_reverse_piped_commands(char ***commands, int command_count)
         wait(NULL);
     }
 }
+// SECTION ENDS: "REVERSE PIPING"
 
+// SECTION STARTS: "SEQUENTIAL EXECUTION"
 /**
  * Function to execute sequential commands (;)
  *
@@ -611,7 +636,9 @@ void execute_sequential_commands(char ***commands, int command_count)
         execute_command(commands[i]);
     }
 }
+// SECTION ENDS: "SEQUENTIAL EXECUTION"
 
+// SECTION STARTS: "CONDITIONAL EXECUTION"
 /**
  * Function to execute conditional commands (&& and ||)
  *
@@ -684,7 +711,9 @@ void execute_conditional_commands(char ***commands, int command_count, char *ope
         }
     }
 }
+// SECTION ENDS: "CONDITIONAL EXECUTION"
 
+// SECTION STARTS: "FILE OPERATIONS - APPEND"
 /**
  * Function to append contents between two text files
  *
@@ -751,7 +780,9 @@ void append_files(char *file1, char *file2)
 
     printf("Files appended successfully\n");
 }
+// SECTION ENDS: "FILE OPERATIONS - APPEND"
 
+// SECTION STARTS: "FILE OPERATIONS - COUNT WORDS"
 /**
  * Function to count words in a text file
  *
@@ -787,7 +818,9 @@ void count_words(char *filename)
     fclose(file);
     printf("Number of words in %s: %d\n", filename, word_count);
 }
+// SECTION ENDS: "FILE OPERATIONS - COUNT WORDS"
 
+// SECTION STARTS: "FILE OPERATIONS - CONCATENATE"
 /**
  * Function to concatenate multiple text files
  *
@@ -819,7 +852,9 @@ void concatenate_files(char **filenames, int count)
         fclose(file);
     }
 }
+// SECTION ENDS: "FILE OPERATIONS - CONCATENATE"
 
+// SECTION STARTS: "I/O REDIRECTION"
 /**
  * Function to handle input/output redirection
  *
@@ -893,14 +928,15 @@ void handle_redirection(char **args, int *in_fd, int *out_fd)
         }
     }
 }
+// SECTION ENDS: "I/O REDIRECTION"
 
+// SECTION STARTS: "MEMORY MANAGEMENT"
 /**
  * Function to clean up allocated memory for commands
  *
  * @param commands Array of commands and their arguments
  * @param command_count Number of commands
  */
-// SECTION: memory_management
 void cleanup_commands(char ***commands, int command_count)
 {
     for (int i = 0; i < command_count; i++)
@@ -918,7 +954,6 @@ void cleanup_commands(char ***commands, int command_count)
         }
     }
 }
-// END SECTION: memory_management
 
 /**
  * Function to validate argument count for a command
@@ -948,7 +983,9 @@ int validate_args_count(char **args)
 
     return 1;
 }
+// SECTION ENDS: "MEMORY MANAGEMENT"
 
+// SECTION STARTS: "BUILT-IN COMMANDS"
 /**
  * Function to handle killterm command
  * Terminates the current shell process
