@@ -83,9 +83,6 @@ int main()
             continue;
         }
 
-        // printf("%d command count", command_count);
-        // printf("%s special char[0]", commands[0][0]);
-
         // Handle built-in commands
         if (command_count == 1 && commands[0][0] != NULL)
         {
@@ -124,9 +121,6 @@ int main()
         else if (special_char[0] == '#' && command_count == 1)
         {
             // Count words
-            // printf("special_char[0] %s\n", special_char[0]);
-            // printf("command[0][0][0]: %s", commands[0][0]);
-            // printf("command[0][0]: %s", commands[0][0]);
             count_words(commands[0][0]);
         }
         else if (special_char[0] == '+')
