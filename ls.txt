@@ -1,0 +1,15 @@
+total 920
+-rw-r--r-- 1 prajap1i 2000279516 824751 Mar 15 15:16 A3_W25.pdf
+-rwxr-xr-x 1 prajap1i 2000279516  22696 Mar 15 19:31 a.out
+-rw-r--r-- 1 prajap1i 2000279516  25697 Mar 16 08:26 kirtan_prajapati_110181626.c
+-rw-r--r-- 1 prajap1i 2000279516      0 Mar 16 09:20 ls.txt
+-rw-r--r-- 1 prajap1i 2000279516     50 Mar 15 19:25 random2.txt
+-rw-r--r-- 1 prajap1i 2000279516     77 Mar 15 19:25 random3.txt
+-rw-r--r-- 1 prajap1i 2000279516     27 Mar 15 15:16 random4.txt
+-rw-r--r-- 1 prajap1i 2000279516     27 Mar 15 15:16 random5.txt
+-rw-r--r-- 1 prajap1i 2000279516     27 Mar 15 15:16 random6.txt
+-rw-r--r-- 1 prajap1i 2000279516     27 Mar 15 15:16 random7.txt
+-rw-r--r-- 1 prajap1i 2000279516     27 Mar 15 15:16 random8.txt
+-rw-r--r-- 1 prajap1i 2000279516   2858 Mar 15 18:20 README.md
+-rw-r--r-- 1 prajap1i 2000279516   2857 Mar 15 15:16 sample.txt
+-rwxr-xr-x 1 prajap1i 2000279516  22744 Mar 16 08:28 w25shell
