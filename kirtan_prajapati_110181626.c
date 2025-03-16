@@ -83,6 +83,9 @@ int main()
             continue;
         }
 
+        // printf("%d command count", command_count);
+        // printf("%s special char[0]", commands[0][0]);
+
         // Handle built-in commands
         if (command_count == 1 && commands[0][0] != NULL)
         {
@@ -121,6 +124,9 @@ int main()
         else if (special_char[0] == '#' && command_count == 1)
         {
             // Count words
+            // printf("special_char[0] %s\n", special_char[0]);
+            // printf("command[0][0][0]: %s", commands[0][0]);
+            // printf("command[0][0]: %s", commands[0][0]);
             count_words(commands[0][0]);
         }
         else if (special_char[0] == '+')
@@ -144,9 +150,10 @@ int main()
             // Conditional execution with && and ||
             execute_conditional_commands(commands, command_count, special_char);
         }
-        else if (command_count == 1)
+        else if (command_count == 1 && !special_char)
         {
             // Single command execution
+            printf("Single COmmand Executtion");
             execute_command(commands[0]);
         }
         else
@@ -224,42 +231,42 @@ int parse_input(char *input, char ***commands, int *command_count, char *special
     }
 
     // Check for special characters
-    if (strstr(input, " | "))
+    if (strstr(input, "|"))
     {
         strcpy(special_char, "|");
         token = strtok_r(input_copy, "|", &saveptr1);
     }
-    else if (strstr(input, " = "))
+    else if (strstr(input, "="))
     {
         strcpy(special_char, "=");
         token = strtok_r(input_copy, "=", &saveptr1);
     }
-    else if (strstr(input, " ~ "))
+    else if (strstr(input, "~"))
     {
         strcpy(special_char, "~");
         token = strtok_r(input_copy, "~", &saveptr1);
     }
-    else if (strstr(input, " # "))
+    else if (strstr(input, "#"))
     {
         strcpy(special_char, "#");
         token = strtok_r(input_copy, "#", &saveptr1);
     }
-    else if (strstr(input, " + "))
+    else if (strstr(input, "+"))
     {
         strcpy(special_char, "+");
         token = strtok_r(input_copy, "+", &saveptr1);
     }
-    else if (strstr(input, " ; "))
+    else if (strstr(input, ";"))
     {
         strcpy(special_char, ";");
         token = strtok_r(input_copy, ";", &saveptr1);
     }
-    else if (strstr(input, " && "))
+    else if (strstr(input, "&&"))
     {
         strcpy(special_char, "&&");
         token = strtok_r(input_copy, "&&", &saveptr1);
     }
-    else if (strstr(input, " || "))
+    else if (strstr(input, "||"))
     {
         strcpy(special_char, "||");
         token = strtok_r(input_copy, "||", &saveptr1);
@@ -777,7 +784,7 @@ void count_words(char *filename)
     FILE *file = fopen(filename, "r");
     if (!file)
     {
-        perror("Failed to open file");
+        printf("Failed to open file %s", filename);
         return;
     }
 
