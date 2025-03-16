@@ -144,10 +144,8 @@ int main()
             // Conditional execution with && and ||
             execute_conditional_commands(commands, command_count, special_char);
         }
-        else if (command_count == 1 && !special_char)
+        else if (command_count == 1)
         {
-            // Single command execution
-            printf("Single COmmand Executtion");
             execute_command(commands[0]);
         }
         else
